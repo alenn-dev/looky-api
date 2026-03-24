@@ -1,0 +1,25 @@
+schema:
+  - internal/graphql/*.graphql
+
+exec:
+  filename: internal/graphql/generated.go
+  package: graphql
+
+model:
+  filename: internal/graphql/models_gen.go
+  package: graphql
+
+resolver:
+  layout: follow-schema
+  dir: internal/graphql
+  package: graphql
+
+models:
+  Order:
+    model: looky/internal/models.OrderResponse
+  OrderItem:
+    model: looky/internal/models.OrderItemResponse
+  OrderStatusHistory:
+    model: looky/internal/models.OrderStatusHistoryResponse
+  OrderStatus:
+    model: looky/internal/models.OrderStatus

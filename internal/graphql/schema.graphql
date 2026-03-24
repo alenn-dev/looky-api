@@ -1,0 +1,42 @@
+enum OrderStatus {
+  pending
+  confirmed
+  preparing
+  on_the_way
+  delivered
+  cancelled
+}
+
+type Order {
+  id: String!
+  customerId: String!
+  restaurantId: String!
+  driverId: String
+  deliveryAddress: String!
+  total: Int!
+  status: OrderStatus!
+  items: [OrderItem!]!
+  createdAt: String!
+}
+
+type OrderItem {
+  id: String!
+  productId: String!
+  name: String!
+  quantity: Int!
+  unitPrice: Int!
+}
+
+type OrderStatusHistory {
+  id: String!
+  orderId: String!
+  status: OrderStatus!
+  changedBy: String!
+  changedAt: String!
+}
+
+type Query {
+  orders(status: OrderStatus, from: String, to: String): [Order!]!
+  order(id: String!): Order
+  orderHistory(orderId: String!): [OrderStatusHistory!]!
+}
